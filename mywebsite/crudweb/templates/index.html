@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Crud Web</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        h2{
+            padding-top: 5px;
+        }
+        footer{
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+        }
+        p.pfoot{
+            padding-top: 10px;
+        }
+        @media only screen and (max-width:800px) {
+        /* For tablets: */
+        .main {
+            width: 80%;
+            padding: 0;
+        }
+        .right {
+            width: 100%;
+        }
+        }
+        @media only screen and (max-width:500px) {
+        /* For mobile phones: */
+        .menu, .main, .right {
+            width: 100%;
+        }
+        }
+    </style>
+</head>
+<body>
+    <!--this Header-->
+    <header class="web-header">
+        <div class="container-fluid p-3 bg-danger text-white text-center">
+            <h1>Welcome to CRUD WEB Perpustakaan</h1>   
+        </div>
+    </header>
+    
+    <!--this table information data input from crud web perpustakaan-->
+    <div class="container mt-3">
+        <h2>Daftar Buku CRUD Web Perpustakaan</h2>
+        <p>Berikut ini adalah tabel daftar buku yang tersedia di CRUD Web Perpustakaan.</p>            
+        <table class="table table-dark table-hover">
+        <thead>
+            <tr>
+            <th>ID</th>
+            <th>Nama Buku</th>
+            <th>Pengarang</th>
+            <th>Tahun Terbit</th>
+            <th>Penerbit</th>
+            <th>Lokasi</th>
+            <th></th>
+            <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for x in mybook %}
+            <tr>
+                <td>{{x.id}}</td>
+                <td>{{x.bookName}}</td>
+                <td>{{x.author}}</td>
+                <td>{{x.year}}</td>
+                <td>{{x.publisher}}</td>
+                <td>{{x.location}}</td>
+                <td><a href="update/{{ x.id }}"><button class="btn btn-info">update</button></td>
+                <td><a href="delete/{{ x.id }}"><button class="btn btn-danger">delete</button></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        </table>
+
+        <!--this btn add-->
+        <div class="d-grid gap-3 btn-add">
+            <a href="add/">
+                <button type="button" class="btn btn-success btn-block">Tambah Buku</button>
+            </a>
+        </div>
+    </div>
+
+    <!--this footer-->
+    <footer class="myfooter container-fluid p-1 bg-danger text-white text-center">
+        <p class="pfoot">Design by &#128421; Galih. Ari-Abror. Tugas@PemrogramanOOP</p>
+    </footer>
+</body>
+</html>
